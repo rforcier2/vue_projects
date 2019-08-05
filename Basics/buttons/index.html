@@ -1,0 +1,47 @@
+<!DOCTYPE <!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--Meta-->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Site-->
+    <title>Basics &middot; Buttons</title>
+    <link rel="shortcut icon" type="image/png" href="../favicon.png"/>
+
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="../css/boostrap.min.css" />
+
+    <!--Custom Styles-->
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/main.css" />
+    <!--Vuejs-->
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+
+    <div id="app" class="container">
+        <h1 class="text-center">Buttons!</h1>
+        <button class="btn btn-success" @click="reveal">Reveal Secret Number!</button>
+        <h2 id="secret" v-if="shown">{{secretNum}}</h2>
+    </div>
+    
+    <!-- <script src="../js/main.js"> -->
+    <script>
+
+    var app = new Vue({
+    el: '#app',
+        data: {
+            secretNum: Math.floor(Math.random()*10) + 1,
+            shown: false
+        },
+        methods: {
+            reveal() {
+                this.shown = !this.shown
+            }
+        }
+    }); 
+
+    </script>
+</body>
+</html>

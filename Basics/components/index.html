@@ -1,0 +1,68 @@
+<!DOCTYPE <!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--Meta-->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Site-->
+    <title>Basics &middot; Components</title>
+    <link rel="shortcut icon" type="image/png" href="../favicon.png"/>
+
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="../css/boostrap.min.css" />
+
+    <!--Custom Styles-->
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/main.css" />
+    <!--Vuejs-->
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+
+    <div id="app" class="container">
+        <h1 class="text-center">Components</h1>
+        <counter v-bind:add-num="5" />
+    </div>
+    
+    <!-- <script src="../js/main.js"> -->
+    <script>
+        var counter = Vue.component('counter', {
+            template: `
+            <div>
+                <div> Count: {{this.count}}</div>
+                <button class="btn btn-primary" @click="increment">
+                    Increment {{this.addNum}}
+                </button>
+            </div>
+            `,
+            props: {
+                addNum: {
+                    type: Number,
+                    default: 1
+                }
+            },
+            data() {
+                return {
+                    count: 0
+                }
+            },
+            methods: {
+                increment() {
+                    this.count += this.addNum
+                }
+            }
+        })
+
+        var app = new Vue({
+        el: '#app',
+            data: {
+            },
+            components:{
+                counter
+            }
+        }); 
+
+    </script>
+</body>
+</html>
