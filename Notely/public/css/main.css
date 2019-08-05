@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Roboto+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Lato|Open+Sans|Roboto+Mono&display=swap');
 
 h1, h2, h3, h4 {
     font-family: 'Montserrat', serif, sans-serif;
@@ -7,7 +7,9 @@ h1, h2, h3, h4 {
 code, pre {
     font-family: 'Roboto Mono', monospace;
 }
-
+input, label{
+    font-family: 'Lato', serif, sans-serif;
+}
 p, a, span, div, button{
     font-family: 'Open Sans', 'Montserrat', Verdana, serif, sans-serif;
 }
