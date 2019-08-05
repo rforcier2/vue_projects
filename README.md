@@ -2,9 +2,14 @@
 Vue Projects is a repo for making small demo apps with Vue .
 
 # Projects
+ - Basic
  - Notely
  - Captain
  - Jokes 101
+
+## Basic
+ - Get to know the basics of Vue
+ - Simple examples to get you familiar with Vue Essentials such as components, buttons, directives, props, and more 
 
 ## Notely 
  - Simple note taking app.
