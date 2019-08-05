@@ -22,6 +22,9 @@ Vue Projects is a repo for making small demo apps with Vue .
  - Got jokes? Now you do.
 
 ### How do I *vue* these on my computer? 
+- Just download and open the index.html files on your browser!
+- if you would rather host them locally, you can do so using NodeJS and my preferred test server: http-server
+
 ![NodeJS logo image][nodeImg]
  - I used [NodeJS][1] and [http-server][2] to host the page locally.
  - Download [NodeJS][1] for your OS

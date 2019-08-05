@@ -1,0 +1,64 @@
+<!DOCTYPE <!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--Meta-->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Site-->
+    <title>Basics &middot; Components</title>
+    <link rel="shortcut icon" type="image/png" href="../favicon.png"/>
+
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="../css/bootsrap.min.css" />
+
+    <!--Custom Styles-->
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/main.css" />
+    <!--Vuejs-->
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+
+    <div id="app" class="container">
+        <h1 class="text-center">Created Life Cycle Hook</h1>
+        <div>
+            <h2>Count: {{count}}</h2>
+            <button class="btn btn-primary" @click="increment">Increment</button>
+        </div>
+    </div>
+    
+    <script>
+        var app = new Vue({
+        el: '#app',
+            data: {
+             count: 0
+            },
+            methods: {
+                increment() {
+                    this.count++
+                },
+
+                alertTime() {
+                    console.log(`mounted! Now the time is ${new Date().getHours()}:${new Date().getMinutes()}`)
+                }
+            },
+
+            updated() {
+                console.log('this.count = ', this.count)
+            },
+
+            created() {
+                let h = new Date().getHours(),
+                    m = new Date().getMinutes();
+                console.log(`Created! time is ${h}:${ m < 10 ? '0'+m : m}`)
+            },
+            
+            mounted() {
+                this.alertTime()
+            }
+        }); 
+
+    </script>
+</body>
+</html>
