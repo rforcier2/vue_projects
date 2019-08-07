@@ -26,6 +26,16 @@ var app = new Vue({
         },
         
         methods: {
+            created(){
+                if(localStorage){
+                    for(let each in localStorage){
+                        notes.push(localStorage[each]);
+                    }
+                }
+                else {
+                    alert('you cannot save notes! Your browser does not support localStorage :(');
+                }
+            },
             addNote() {
                 let { text, title, style, color } = this.note;
                 this.notes.push({
@@ -38,7 +48,8 @@ var app = new Vue({
             },
 
             removeNote(index){
-                this.notes.splice(index, 1);
+                var confirmDelete = confirm("Are you sure you want to delete?");
+                if (confirmDelete) this.notes.splice(index, 1);                    
             },
 
             organizeNotesByColor(){
