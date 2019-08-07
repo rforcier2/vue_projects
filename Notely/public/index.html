@@ -33,12 +33,43 @@
                     <label for="noteText">Note Text:</label>
                     <textarea class="form-control" v-model="note.text" rows="3"></textarea>
                 </div>
+                <div class="form-group">
+                    <label for="colorSelect">Choose Note Color:</label>
+                    <select class="form-control" id="colorSelect" v-model="note.style">
+                      <option value="border-primary">Blue</option>
+                      <option value="border-success">Green</option>
+                      <option value="border-danger">Red</option>
+                      <option value="border-warning">Yellow</option>
+                      <option value="border-dark">Black</option>
+                    </select>
+                  </div>
                 <button type="button" @click="addNote" class="btn btn-success">Submit Note</button>
             </form>
         </div>
-        <div id="noteContainer" class="container">
-                <div class="card mx-3 my-3" v-for="note in notes">
-                    <div class="card-body">
+
+        <div class="organizeByColor container col-sm-6 my-5 px-3 py-3 border border-primary">
+            <form class="organizeForm">
+                <div class="form-group">
+                    <label for="organizeSelect"><h4>Organize Notes by Color</h4></label>
+                    <!-- v-model="currentColor.style" -->
+                    <select class="form-control" id="organizeSelect" > 
+                        <option value="border">All</option>
+                        <option value="border-primary">Blue</option>
+                        <option value="border-success">Green</option>
+                        <option value="border-danger">Red</option>
+                        <option value="border-warning">Yellow</option>
+                        <option value="border-dark">Black</option>
+                    </select>
+                </div>
+                <button id="organizeColorButton" type="button" @click="organizeNotesByColor" class="btn btn-primary">Organize Notes</button>
+            </form>
+        </div>
+       
+        <div id="noteContainer" class="container card-container">
+                <h2 class="text-center col-sm-12">Currently Showing {{currentColor.text}} Notes</h2>
+                <div class="card mx-3 my-3 border" v-if="note.style.includes(currentColor.style)"  :class="note.style" v-for="(note, index) in notes">
+                    <div class="card-body" >
+                        <span class="close" @click="removeNote(index)">&times;</span>
                         <h3 class="card-title">{{note.title}}</h3>
                         <p class="card-text">{{note.text}}</p>
                     </div>
@@ -47,7 +78,8 @@
                     </div>
                 </div>
         </div>
-    </div>
+
+    </div> <!-- /#app-->
     
     <!-- <script src="../js/main.js"> -->
     <script src="./js/index.js"></script>
