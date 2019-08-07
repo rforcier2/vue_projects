@@ -1,7 +1,7 @@
 var app = new Vue({
     el: '#app',
         data: {
-            title: 'Notely',
+            title: 'Notely 📓',
             currentColor: {
                 style: 'border',
                 text: "All"

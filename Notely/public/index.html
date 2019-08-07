@@ -22,7 +22,7 @@
 <body>
 
     <div id="app" class="container mt-5">
-        <h1 class="text-center">{{title}} 📓</h1>
+        <h1 class="text-center">{{title}}</h1>
         <div class="container">
             <form>
                 <div class="form-group">
@@ -50,8 +50,9 @@
         <div class="organizeByColor container col-sm-6 my-5 px-3 py-3 border border-primary rounded shadow">
             <form class="organizeForm">
                 <div class="form-group">
-                    <label for="organizeSelect"><h4>Organize Notes by Color 🎨</h4></label>
+                    <label for="organizeSelect text-center"><h4 class="text-center justify-content-center">Organize Notes</h4></label>
                     <!-- v-model="currentColor.style" -->
+                    <p class="lead">By Color 🎨:</p>
                     <select class="form-control" id="organizeSelect" > 
                         <option value="border">All</option>
                         <option value="border-primary">Blue</option>
@@ -60,6 +61,7 @@
                         <option value="border-warning">Yellow</option>
                         <option value="border-dark">Black</option>
                     </select>
+                    <!-- <p class="text-muted">By Priority <small>(coming soon)</small></p> -->
                 </div>
                 <button id="organizeColorButton" type="button" @click="organizeNotesByColor" class="btn btn-primary">Organize 📚</button>
             </form>
