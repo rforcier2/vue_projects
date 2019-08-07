@@ -26,25 +26,16 @@ var app = new Vue({
         },
         
         methods: {
-            created(){
-                if(localStorage){
-                    for(let each in localStorage){
-                        notes.push(localStorage[each]);
-                    }
-                }
-                else {
-                    alert('you cannot save notes! Your browser does not support localStorage :(');
-                }
-            },
+            
             addNote() {
-                let { text, title, style, color } = this.note;
+                let { text, title, style, color, key } = this.note;
                 this.notes.push({
                     text, 
                     title, 
                     date: new Date(Date.now()).toLocaleString(),
                     style,
                     color
-                })
+                });
             },
 
             removeNote(index){
