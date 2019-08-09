@@ -106,7 +106,8 @@ p, a, span, div, button{ font-family: 'Open Sans', 'Montserrat', Verdana, serif,
 #messageDiv{
     position: fixed;
     min-width: 20%;
-    top: 50px;
-    left: 50px;
+    max-width: 80%;
+    top: 2%;
+    margin: 0 auto;
     z-index: 5;
 }

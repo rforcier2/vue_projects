@@ -30,18 +30,8 @@ var app = new Vue({
             
             displayMessage() {
                 let message = document.createElement('div');
-                if (!localStorage){
-                    message.innerText = "Sorry! Your browser doesn't support local storage. You cannot save notes! :(";
-                    message.classList.add('alert');
-                    message.classList.add('alert-danger');
-                    document.getElementById("messageDiv").appendChild(message);
-                }
-                else {
-                    message.innerText = 'You just made a note! 😀';
-                    message.classList.add('alert');
-                    message.classList.add('alert-success');
-                    document.getElementById("messageDiv").appendChild(message);
-                    message.classList.add('fade-in');
+                
+                const animateFade = () => {
                     setTimeout(()=>{ 
                         message.classList.remove('fade-in'), 
                         message.classList.add('fade-out')
@@ -50,10 +40,37 @@ var app = new Vue({
                         document.getElementById("messageDiv").removeChild(message);
                     }, 4000);
                 }
+                
+                let error = "";
+                if (this.note.title == "" ) {
+                    error += "\n Note Title";
+                }
+                if (this.note.text == ""){
+                    error += "\n Note Text";
+                }
+
+                if (error != ""){
+                    message.innerText = "🚫 Error \n You need to fix your:" + error;
+                    message.classList.add('alert');
+                    message.classList.add('alert-danger');
+                    document.getElementById("messageDiv").appendChild(message);
+                    message.classList.add('fade-in');
+                    animateFade();
+                    return false;
+                }
+                else {
+                    message.innerText = 'You just made a note! 😀';
+                    message.classList.add('alert');
+                    message.classList.add('alert-success');
+                    document.getElementById("messageDiv").appendChild(message);
+                    message.classList.add('fade-in');
+                    animateFade();
+                }
             },
 
             addNote() {
-                let { text, title, style, color, key } = this.note;
+                let { text, title, style, color } = this.note;
+                this.displayMessage();
                 this.notes.push({
                     text, 
                     title, 
@@ -61,7 +78,8 @@ var app = new Vue({
                     style,
                     color
                 });
-                this.displayMessage();
+                // https://stackoverflow.com/questions/2010892/storing-objects-in-html5-localstorage
+                // TODO: add localstorage to actually store notes.
             },
 
             removeNote(index){
