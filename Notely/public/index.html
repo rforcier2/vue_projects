@@ -23,9 +23,12 @@
 <body>
 
     <div id="app" class="container mt-5">
-        <h1 class="text-center">{{title}}</h1>
+        <!--Title and page Content: -->
+        <h1 class="text-center mt-5">{{title}}</h1>
+        <p class="mb-5 lead font-weight-bold text-center">{{tagline}}</p>
         <div class="container col-sm-10 border border-info shadow-lg rounded-lg mt-1">
             <h2 class="my-2">Make Notes:</h2>
+
             <form id="createNoteForm">
                 <div class="form-group">
                     <label class="mb-1" for="noteTitle">Note Title:</label>
@@ -45,11 +48,16 @@
                       <option value="border-dark">Black</option>
                     </select>
                   </div>
-                <button type="button" @click="addNote" class="btn btn-success btn-xl col-lg-6 col-sm-12">📝 Make Note</button>
+                <button type="button" @click="addNote" class="btn btn-success btn-md btn-block col-sm-12">📝 Make Note</button>
             </form>
         </div>
 
-        <div class="organizeByColor container col-sm-12 my-5 px-3 py-3 border border-primary rounded shadow">
+        <!--Message alert:-->
+        <div class="text-center" id="messageDiv"></div>
+        <!-- /Message Alert-->
+
+        <!--Organize Notes Form: -->
+        <div class="organizeByColor container col-sm-10 my-5 px-3 py-3 border border-primary rounded shadow">
             <form class="organizeForm col-sm-12">
                 <div class="form-group col-sm-12">
                     <label class="col-sm-12" for="organizeSelect"><h4 class="text-center">Organize Notes</h4></label>
@@ -77,9 +85,11 @@
                 <button id="organizeColorButton" type="button" @click="organizeNotesByColor" class="btn btn-primary">Organize 📚</button>
             </form>
         </div>
+        <!-- / Organize Notes Form-->
        
+        <!-- Note Container: (.noteContainer) -->
         <div id="noteContainer" class="container card-container">
-                <h2 class="text-center col-sm-12">Currently Showing {{currentColor.text}} Notes</h2>
+                <h3 class="text-center mb-1 col-sm-12">Currently Showing {{currentColor.text}} Notes</h3>
                 <div class="card mx-3 my-3 border" v-if="note.style.includes(currentColor.style)"  :class="note.style" v-for="(note, index) in notes">
                     <div class="card-body" >
                         <span class="close" @click="removeNote(index)">&times;</span>
@@ -90,7 +100,7 @@
                         {{note.date}}
                     </div>
                 </div>
-        </div>
+        </div><!-- /.noteContainer-->
 
     </div> <!-- /#app-->
     

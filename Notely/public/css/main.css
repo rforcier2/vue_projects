@@ -102,3 +102,11 @@ p, a, span, div, button{ font-family: 'Open Sans', 'Montserrat', Verdana, serif,
     -moz-animation-duration:0.4s;
     animation-duration:0.4s;
 }
+
+#messageDiv{
+    position: fixed;
+    min-width: 20%;
+    top: 50px;
+    left: 50px;
+    z-index: 5;
+}

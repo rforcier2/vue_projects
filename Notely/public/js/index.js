@@ -2,6 +2,7 @@ var app = new Vue({
     el: '#app',
         data: {
             title: 'Notely 📓',
+            tagline: 'Notes for the modern era',
             currentColor: {
                 style: 'border',
                 text: "All"
@@ -27,6 +28,30 @@ var app = new Vue({
         
         methods: {
             
+            displayMessage() {
+                let message = document.createElement('div');
+                if (!localStorage){
+                    message.innerText = "Sorry! Your browser doesn't support local storage. You cannot save notes! :(";
+                    message.classList.add('alert');
+                    message.classList.add('alert-danger');
+                    document.getElementById("messageDiv").appendChild(message);
+                }
+                else {
+                    message.innerText = 'You just made a note! 😀';
+                    message.classList.add('alert');
+                    message.classList.add('alert-success');
+                    document.getElementById("messageDiv").appendChild(message);
+                    message.classList.add('fade-in');
+                    setTimeout(()=>{ 
+                        message.classList.remove('fade-in'), 
+                        message.classList.add('fade-out')
+                    }, 3000);
+                    setTimeout(()=> {
+                        document.getElementById("messageDiv").removeChild(message);
+                    }, 4000);
+                }
+            },
+
             addNote() {
                 let { text, title, style, color, key } = this.note;
                 this.notes.push({
@@ -36,30 +61,7 @@ var app = new Vue({
                     style,
                     color
                 });
-                if (!localStorage){
-                    let div = document.createElement('div');
-                    div.innerText = "Sorry! Your browser doesn't support local storage. You cannot save notes! :(";
-                    div.classList.add('alert');
-                    div.classList.add('alert-danger');
-                    div.classList.add('mt-2');
-                    document.getElementById("createNoteForm").appendChild(div);
-                }
-                else {
-                    let success = document.createElement('div');
-                    success.innerText = 'You just made a note! 😀';
-                    success.classList.add('alert');
-                    success.classList.add('alert-success');
-                    success.classList.add('mt-2');
-                    document.getElementById("createNoteForm").appendChild(success);
-                    success.classList.add('fade-in');
-                    setTimeout(()=>{ 
-                        success.classList.remove('fade-in'), 
-                        success.classList.add('fade-out')
-                    }, 3000);
-                    setTimeout(()=> {
-                        document.getElementById("createNoteForm").removeChild(success);
-                    }, 4000);
-                }
+                this.displayMessage();
             },
 
             removeNote(index){
