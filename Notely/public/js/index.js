@@ -36,6 +36,30 @@ var app = new Vue({
                     style,
                     color
                 });
+                if (!localStorage){
+                    let div = document.createElement('div');
+                    div.innerText = "Sorry! Your browser doesn't support local storage. You cannot save notes! :(";
+                    div.classList.add('alert');
+                    div.classList.add('alert-danger');
+                    div.classList.add('mt-2');
+                    document.getElementById("createNoteForm").appendChild(div);
+                }
+                else {
+                    let success = document.createElement('div');
+                    success.innerText = 'You just made a note! 😀';
+                    success.classList.add('alert');
+                    success.classList.add('alert-success');
+                    success.classList.add('mt-2');
+                    document.getElementById("createNoteForm").appendChild(success);
+                    success.classList.add('fade-in');
+                    setTimeout(()=>{ 
+                        success.classList.remove('fade-in'), 
+                        success.classList.add('fade-out')
+                    }, 3000);
+                    setTimeout(()=> {
+                        document.getElementById("createNoteForm").removeChild(success);
+                    }, 4000);
+                }
             },
 
             removeNote(index){

@@ -23,18 +23,19 @@
 
     <div id="app" class="container mt-5">
         <h1 class="text-center">{{title}}</h1>
-        <div class="container">
-            <form>
+        <div class="container col-sm-10 border border-info shadow-lg rounded-lg mt-1">
+            <h2 class="my-2">Make Notes:</h2>
+            <form id="createNoteForm">
                 <div class="form-group">
-                    <label for="noteTitle">Note Title</label>
+                    <label class="mb-1" for="noteTitle">Note Title:</label>
                     <input type="text" v-model="note.title" class="form-control" placeholder="Amazing Day">
                 </div>
                 <div class="form-group">
-                    <label for="noteText">Note Text:</label>
+                    <label class="mb-1" for="noteText">Note Text:</label>
                     <textarea class="form-control" v-model="note.text" placeholder="What had happened was..." rows="3"></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="colorSelect">Choose Note Color:</label>
+                    <label class="mb-1" for="colorSelect">Note Color:</label>
                     <select class="form-control" id="colorSelect" v-model="note.style">
                       <option value="border-primary">Blue</option>
                       <option value="border-success">Green</option>
@@ -43,16 +44,16 @@
                       <option value="border-dark">Black</option>
                     </select>
                   </div>
-                <button type="button" @click="addNote" class="btn btn-success">📝 Make Note</button>
+                <button type="button" @click="addNote" class="btn btn-success btn-xl col-lg-6 col-sm-12">📝 Make Note</button>
             </form>
         </div>
 
-        <div class="organizeByColor container col-sm-6 my-5 px-3 py-3 border border-primary rounded shadow">
-            <form class="organizeForm">
-                <div class="form-group">
-                    <label for="organizeSelect text-center"><h4 class="text-center justify-content-center">Organize Notes</h4></label>
+        <div class="organizeByColor container col-sm-12 my-5 px-3 py-3 border border-primary rounded shadow">
+            <form class="organizeForm col-sm-12">
+                <div class="form-group col-sm-12">
+                    <label class="col-sm-12" for="organizeSelect"><h4 class="text-center">Organize Notes</h4></label>
                     <!-- v-model="currentColor.style" -->
-                    <p class="lead">By Color 🎨:</p>
+                    <p class="lead mb-1">By Color 🎨:</p>
                     <select class="form-control" id="organizeSelect" > 
                         <option value="border">All</option>
                         <option value="border-primary">Blue</option>
@@ -61,6 +62,15 @@
                         <option value="border-warning">Yellow</option>
                         <option value="border-dark">Black</option>
                     </select>
+                    <p class="mb-1 mt-3 lead">By Priority ⭐</p> <small>(coming soon)</small>
+                    <select class="form-control" id="prioritySelect" disabled> 
+                            <option value="all">All</option>
+                            <option value="prority-1">1 High</option>
+                            <option value="priority-2">2 Medium-High</option>
+                            <option value="priority-3">3 Medium</option>
+                            <option value="priority-4">4 Medium-Low</option>
+                            <option value="priority-5">5 Low</option>
+                        </select>
                     <!-- <p class="text-muted">By Priority <small>(coming soon)</small></p> -->
                 </div>
                 <button id="organizeColorButton" type="button" @click="organizeNotesByColor" class="btn btn-primary">Organize 📚</button>
