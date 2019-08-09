@@ -78,9 +78,9 @@ p, a, span, div, button{ font-family: 'Open Sans', 'Montserrat', Verdana, serif,
 
 .fade-out {
     opacity:0;  
-    -webkit-animation:fadeOut ease-in 1;  
-    -moz-animation:fadeOut ease-in 1;
-    animation:fadeOut ease-in 1;
+    -webkit-animation:fadeOut ease-out 1;  
+    -moz-animation:fadeOut ease-out 1;
+    animation:fadeOut ease-out 1;
 
     -webkit-animation-fill-mode:forwards;  
     -moz-animation-fill-mode:forwards;
