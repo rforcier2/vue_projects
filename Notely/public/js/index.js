@@ -27,7 +27,7 @@ var app = new Vue({
         },
         
         methods: {
-            
+
             verify(content) {
                 let message = document.createElement('div');
                 message.classList.add('alert');
@@ -55,8 +55,8 @@ var app = new Vue({
                     error += "\n No Color Selected "
                 }
 
-                if(content.text.length > 50){
-                    error += "\n Note is too long! Make it short and snappy";
+                if(content.text.length >= 75){
+                    error += "\n Note should be 75 or fewer letters";
                 }
 
                 if (error !== ""){
