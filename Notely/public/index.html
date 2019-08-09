@@ -8,7 +8,7 @@
     <meta name="description" content="Notely | Notes for the modern era. Notely is a modern note taking web-app made with Vue. Notes are easy to organize and have a clean modern look to them." />
 
     <!--Site-->
-    <title>Notely | Making memorable, clean, modern notes.</title>
+    <title>Notely | Make memorable, clean, modern notes.</title>
     <link rel="shortcut icon" type="image/png" href="./favicon.png"/>
 
     <!--Bootstrap-->
@@ -23,12 +23,14 @@
 <body>
 
     <div id="app" class="container mt-5">
+
         <!--Title and page Content: -->
         <h1 class="text-center mt-5">{{title}}</h1>
         <p class="mb-5 lead font-weight-bold text-center">{{tagline}}</p>
-        <div class="container col-sm-10 border border-info shadow-lg rounded-lg mt-1">
-            <h2 class="my-2">Make Notes:</h2>
 
+        <!--Make Note Container-->
+        <div class="container col-sm-10 border border-info shadow-lg rounded-lg mt-1 addNoteContainer">
+            <h2 class="my-2">Make Notes:</h2>
             <form id="createNoteForm">
                 <div class="form-group">
                     <label class="mb-1" for="noteTitle">Note Title:</label>
@@ -41,7 +43,7 @@
                 <div class="form-group">
                     <label class="mb-1" for="colorSelect">Note Color:</label>
                     <select class="form-control" id="colorSelect" v-model="note.style">
-                      <option value="border-primary">Blue</option>
+                      <option value="border-primary" selected="selected" selected>Blue</option>
                       <option value="border-success">Green</option>
                       <option value="border-danger">Red</option>
                       <option value="border-warning">Yellow</option>
@@ -50,7 +52,7 @@
                   </div>
                 <button type="button" @click="addNote" class="btn btn-success btn-md btn-block col-sm-12">📝 Make Note</button>
             </form>
-        </div>
+        </div><!-- /.addNoteContainer-->
 
         <!--Message alert:-->
         <div class="text-center" id="messageDiv"></div>
@@ -61,8 +63,10 @@
             <form class="organizeForm col-sm-12">
                 <div class="form-group col-sm-12">
                     <label class="col-sm-12" for="organizeSelect"><h4 class="text-center">Organize Notes</h4></label>
-                    <!-- v-model="currentColor.style" -->
-                    <p class="lead mb-1">By Color 🎨:</p>
+                    <!--
+                        Option to default color 
+                        v-model="currentColor.style" -->
+                    <p class="lead mb-1">By Color 🎨</p>
                     <select class="form-control" id="organizeSelect" > 
                         <option value="border">All</option>
                         <option value="border-primary">Blue</option>

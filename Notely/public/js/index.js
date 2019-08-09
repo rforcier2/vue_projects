@@ -28,8 +28,9 @@ var app = new Vue({
         
         methods: {
             
-            displayMessage() {
+            verify(content) {
                 let message = document.createElement('div');
+                message.classList.add('alert');
                 
                 const animateFade = () => {
                     setTimeout(()=>{ 
@@ -42,16 +43,24 @@ var app = new Vue({
                 }
                 
                 let error = "";
-                if (this.note.title == "" ) {
-                    error += "\n Note Title";
+                if (content.title == "" ) {
+                    error += "\n No Title ";
                 }
-                if (this.note.text == ""){
-                    error += "\n Note Text";
+                
+                if (content.text == ""){
+                    error += "\n No Text ";
                 }
 
-                if (error != ""){
-                    message.innerText = "🚫 Error \n You need to fix your:" + error;
-                    message.classList.add('alert');
+                if(content.style == ""){
+                    error += "\n No Color Selected "
+                }
+
+                if(content.text.length > 50){
+                    error += "\n Note is too long! Make it short and snappy";
+                }
+
+                if (error !== ""){
+                    message.innerText = "🚫 Error \n You need to fix:" + error;
                     message.classList.add('alert-danger');
                     document.getElementById("messageDiv").appendChild(message);
                     message.classList.add('fade-in');
@@ -60,24 +69,25 @@ var app = new Vue({
                 }
                 else {
                     message.innerText = 'You just made a note! 😀';
-                    message.classList.add('alert');
                     message.classList.add('alert-success');
                     document.getElementById("messageDiv").appendChild(message);
                     message.classList.add('fade-in');
                     animateFade();
+                    return true;
                 }
             },
 
             addNote() {
                 let { text, title, style, color } = this.note;
-                this.displayMessage();
-                this.notes.push({
-                    text, 
-                    title, 
-                    date: new Date(Date.now()).toLocaleString(),
-                    style,
-                    color
-                });
+                if (this.verify(this.note)) {
+                    this.notes.push({
+                        text, 
+                        title, 
+                        date: new Date(Date.now()).toLocaleString(),
+                        style,
+                        color
+                    });
+                }
                 // https://stackoverflow.com/questions/2010892/storing-objects-in-html5-localstorage
                 // TODO: add localstorage to actually store notes.
             },
