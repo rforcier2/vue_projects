@@ -11,7 +11,7 @@ Vue Projects is a repo for making small demo apps with Vue .
  - Get to know the basics of Vue
  - Simple examples to get you familiar with Vue Essentials such as components, buttons, directives, props, and more 
 
-## Notely 
+## Notely - [Live Demo](https://rforcier2.github.io/notely/)
  - Simple note taking app.
  - easy place to keep simple notes
 
