@@ -34,11 +34,11 @@
             <form id="createNoteForm">
                 <div class="form-group">
                     <label class="mb-1" for="noteTitle">Note Title:</label>
-                    <input type="text" v-model="note.title" class="form-control" placeholder="Amazing Day">
+                    <input type="text" id="noteTitle" v-model="note.title" class="form-control" placeholder="Amazing Day">
                 </div>
                 <div class="form-group">
                     <label class="mb-1" for="noteText">Note Text:</label>
-                    <textarea class="form-control" v-model="note.text" placeholder="What had happened was..." rows="3"></textarea>
+                    <textarea class="form-control" id="noteText" v-model="note.text" placeholder="What had happened was..." rows="3"></textarea>
                 </div>
                 <div class="form-group">
                     <label class="mb-1" for="colorSelect">Note Color:</label>
@@ -75,8 +75,8 @@
                         <option value="border-warning">Yellow</option>
                         <option value="border-dark">Black</option>
                     </select>
-                    <p class="mb-1 mt-3 lead">By Priority ⭐</p> <small>(coming soon)</small>
-                    <select class="form-control" id="prioritySelect" disabled> 
+                    <label for="prioritySelect"><p class="mb-1 mt-3 lead">By Priority ⭐</p> <small>(coming soon)</small></label>
+                    <select id="prioritySelect" class="form-control" id="prioritySelect" disabled> 
                             <option value="all">All</option>
                             <option value="prority-1">1 High</option>
                             <option value="priority-2">2 Medium-High</option>
